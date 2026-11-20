@@ -1,0 +1,16 @@
+services:
+  ysunet-panel:
+    build: .
+    image: ysunet-panel:latest
+    container_name: ysunet-panel
+    restart: unless-stopped
+    environment:
+      RUIJIE_USERNAME: "${RUIJIE_USERNAME:-}"
+      RUIJIE_PASSWORD: "${RUIJIE_PASSWORD:-}"
+      RUIJIE_SERVICE: "${RUIJIE_SERVICE:-中国联通}"
+      TZ: "Asia/Shanghai"
+      CHECK_INTERVAL: "300"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data:/data
